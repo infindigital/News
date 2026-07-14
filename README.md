@@ -39,6 +39,18 @@ News/
 | Auth             | JWT + Role-Based Access Control                                   |
 | Deployment       | Vercel (frontend), Docker (CMS), Cloudflare CDN                   |
 
+## Deploy to a live URL
+
+The frontend runs on bundled mock data by default, so it deploys to a working
+public site **without a database or CMS**. On [Vercel](https://vercel.com/new):
+**import this repo → set Root Directory to `frontend` → Deploy.** Add
+`NEXT_PUBLIC_USE_MOCK_FALLBACK=true` and you have a live site; point it at a
+hosted Strapi later by flipping that to `false` and adding the CMS URLs. Full
+walkthrough (Vercel native integration, GitHub Actions, and hosting Strapi +
+Postgres) is in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/infindigital/news&root-directory=frontend&env=NEXT_PUBLIC_USE_MOCK_FALLBACK&project-name=meridian-news&repository-name=meridian-news)
+
 ## Quick start (local, no backend required)
 
 The frontend ships with a **mock data fallback**, so you can run the full UI

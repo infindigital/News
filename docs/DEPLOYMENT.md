@@ -1,5 +1,60 @@
 # Deployment
 
+## Deploy from GitHub → live URL (fastest path)
+
+Because the frontend has a **mock-data fallback**, you can get a live site on
+Vercel in minutes **without hosting Strapi or a database first**. Wire up the
+CMS afterwards and flip one env var.
+
+### A. Frontend on Vercel (native GitHub integration — recommended)
+
+1. Go to **vercel.com → Add New → Project** and import the GitHub repo
+   `infindigital/news`.
+2. **Root Directory** → set to **`frontend`** (this is a monorepo; Vercel must
+   build the subfolder). Framework preset auto-detects **Next.js**.
+3. Add environment variables (Project → Settings → Environment Variables):
+
+   | Variable                        | Value (start here)                    |
+   | ------------------------------- | ------------------------------------- |
+   | `NEXT_PUBLIC_SITE_URL`          | `https://<your-project>.vercel.app`   |
+   | `NEXT_PUBLIC_SITE_NAME`         | `Meridian News`                       |
+   | `NEXT_PUBLIC_USE_MOCK_FALLBACK` | `true` (live site with demo content)  |
+
+4. **Deploy.** Every push to the branch now auto-deploys; PRs get preview URLs.
+
+> To go live on the `main` branch, either merge this branch into `main` or set
+> your production branch to `claude/news-portal-enterprise-on5004` in
+> Vercel → Settings → Git.
+
+### B. Point the frontend at a hosted CMS (when ready)
+
+Deploy Strapi + Postgres (section 2–3 below or Railway/Render one-click), then
+in Vercel set:
+
+```
+NEXT_PUBLIC_STRAPI_URL=https://<cms-host>
+NEXT_PUBLIC_STRAPI_API_URL=https://<cms-host>/api
+NEXT_PUBLIC_STRAPI_GRAPHQL_URL=https://<cms-host>/graphql
+STRAPI_API_TOKEN=<read-only token from Strapi admin>
+REVALIDATE_SECRET=<same value as the CMS webhook header>
+NEXT_PUBLIC_USE_MOCK_FALLBACK=false
+```
+
+Redeploy. The site now serves live CMS content with on-demand ISR.
+
+### C. Alternative — deploy via GitHub Actions
+
+`.github/workflows/deploy-vercel.yml` deploys on push to `main` (and PR
+previews) once you add repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
+`VERCEL_PROJECT_ID` (get the IDs by running `vercel link` in `frontend/`). It
+skips itself until `VERCEL_TOKEN` is set, so it never fails a build. Use this
+**or** the native integration in A — not both.
+
+`.github/workflows/ci.yml` runs typecheck + lint + build on every push/PR and
+needs no secrets.
+
+---
+
 ## Topology
 
 - **Frontend** → Vercel (or any Node host) behind **Cloudflare** CDN.
