@@ -51,6 +51,28 @@ Postgres) is in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/infindigital/news&root-directory=frontend&env=NEXT_PUBLIC_USE_MOCK_FALLBACK&project-name=meridian-news&repository-name=meridian-news)
 
+## Run CMS + frontend together (one command)
+
+For a full live setup — edit in the CMS, see it on the site — from the repo root:
+
+```bash
+npm install          # installs the root runner (concurrently)
+npm run setup        # installs backend + frontend deps, writes frontend/.env.local
+npm run start:fresh  # builds the Strapi admin, then runs BOTH servers together
+```
+
+- CMS admin → http://localhost:1337/admin (create your admin user, add articles, Publish)
+- Frontend → http://localhost:3000 (auto-reads live CMS content; refresh to see edits)
+
+Public read permissions are granted automatically on first boot, so published
+content shows up on the site with no manual role setup. On later runs (no code
+changes), `npm run dev` starts both without the rebuild step.
+
+> **GitHub Codespaces:** run the same commands, then in the **Ports** tab set
+> ports **1337** and **3000** to **Public** and open them. Use `start:fresh`
+> (production mode) — Strapi's `develop` hot-reload uses a websocket that the
+> Codespaces proxy blocks, causing an endless refresh loop on the admin page.
+
 ## Quick start (local, no backend required)
 
 The frontend ships with a **mock data fallback**, so you can run the full UI
