@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Image placeholder">
+  <rect width="1200" height="675" fill="#e2e8f0"/>
+  <path d="M0 0h1200v675H0z" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+  <g fill="#94a3b8">
+    <circle cx="600" cy="300" r="60"/>
+    <path d="M480 430l70-90 55 66 45-40 70 64z"/>
+  </g>
+  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="28" fill="#64748b" text-anchor="middle">Meridian News</text>
+</svg>

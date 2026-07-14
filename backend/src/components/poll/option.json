@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_poll_options",
+  "info": {
+    "displayName": "Poll Option",
+    "icon": "chartCircle"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "votes": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    }
+  }
+}

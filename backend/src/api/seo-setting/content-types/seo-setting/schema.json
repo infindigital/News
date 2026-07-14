@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "seo_settings",
+  "info": {
+    "singularName": "seo-setting",
+    "pluralName": "seo-settings",
+    "displayName": "SEO Settings",
+    "description": "Global SEO defaults"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "defaultMetaTitle": {
+      "type": "string"
+    },
+    "defaultMetaDescription": {
+      "type": "text"
+    },
+    "defaultOgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "robotsTxt": {
+      "type": "text"
+    },
+    "googleSiteVerification": {
+      "type": "string"
+    },
+    "organizationSchema": {
+      "type": "json"
+    }
+  }
+}

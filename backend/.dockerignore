@@ -1,0 +1,13 @@
+.git
+.tmp
+.cache
+.strapi
+node_modules
+build
+dist
+.env
+.env.*
+!.env.example
+public/uploads/*
+!public/uploads/.gitkeep
+npm-debug.log

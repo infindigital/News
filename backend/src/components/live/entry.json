@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_live_entries",
+  "info": {
+    "displayName": "Live Entry",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "important": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

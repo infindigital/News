@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Blue primary — newspaper masthead */
+    --primary: 221 83% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Red breaking-news accent */
+    --breaking: 0 84% 48%;
+    --breaking-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 45%;
+
+    --radius: 0.4rem;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 44% 11%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 44% 11%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+
+    --breaking: 0 84% 60%;
+    --breaking-foreground: 0 0% 100%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 96%;
+
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 210 40% 96%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* Respect users who prefer reduced motion (WCAG 2.2). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+/* Skip link for screen-reader / keyboard navigation. */
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground;
+}
+
+/* ── Article prose typography ─────────────────────────────────────────── */
+.article-prose {
+  @apply text-lg leading-relaxed text-foreground/90;
+}
+.article-prose p {
+  @apply mb-6;
+}
+.article-prose .lead {
+  @apply text-xl font-medium leading-relaxed text-foreground;
+}
+.article-prose h2 {
+  @apply mb-4 mt-10 scroll-mt-28 font-serif text-2xl font-bold text-foreground;
+}
+.article-prose h3 {
+  @apply mb-3 mt-8 scroll-mt-28 font-serif text-xl font-bold text-foreground;
+}
+.article-prose a {
+  @apply text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary;
+}
+.article-prose ul {
+  @apply mb-6 list-disc space-y-2 pl-6;
+}
+.article-prose ol {
+  @apply mb-6 list-decimal space-y-2 pl-6;
+}
+.article-prose figure {
+  @apply my-8;
+}
+.article-prose figure img {
+  @apply w-full rounded-lg;
+}
+.article-prose figcaption {
+  @apply mt-2 text-center text-sm text-muted-foreground;
+}
+.article-prose blockquote.pullquote {
+  @apply my-8 border-l-4 border-primary bg-muted/50 py-4 pl-6 pr-4 font-serif text-2xl font-medium italic leading-snug text-foreground;
+}
+.article-prose blockquote {
+  @apply my-6 border-l-4 border-primary pl-6 italic text-muted-foreground;
+}
+
+/* Ticker gradient masks so text fades at the edges. */
+.ticker-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}

@@ -1,0 +1,38 @@
+{
+  "name": "news-portal-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Headless CMS for the enterprise news portal — Strapi v5 + PostgreSQL",
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "seed": "node ./scripts/seed.js"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.5.0",
+    "@strapi/plugin-graphql": "5.5.0",
+    "@strapi/plugin-users-permissions": "5.5.0",
+    "@strapi/provider-upload-cloudinary": "5.5.0",
+    "@strapi/strapi": "5.5.0",
+    "better-sqlite3": "11.3.0",
+    "pg": "8.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "styled-components": "^6.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "news-portal-cms"
+  },
+  "license": "MIT"
+}
