@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": "Events / calendar entries — an example custom post type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "registrationUrl": {
+      "type": "string"
+    },
+    "isFree": {
+      "type": "boolean",
+      "default": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

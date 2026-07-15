@@ -21,6 +21,7 @@ const READ_COLLECTIONS = [
   'gallery',
   'video',
   'podcast',
+  'event',
   'site-setting',
   'seo-setting',
   'comment',

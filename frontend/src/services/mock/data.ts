@@ -360,6 +360,55 @@ export const mockSiteSettings: SiteSettings = {
   footerText: '© 2026 Meridian Media Group. All rights reserved.',
 };
 
+// ── Events (example custom post type) ───────────────────────────────────────
+export const mockEvents: import('@/types').EventItem[] = [
+  {
+    id: 1,
+    title: 'Global Climate Summit 2026',
+    slug: 'global-climate-summit-2026',
+    summary:
+      'World leaders, scientists and activists gather to chart the next decade of climate action.',
+    description:
+      '<p>A three-day summit featuring keynote addresses, panel discussions and policy workshops on the path to net zero.</p>',
+    featuredImage: img('1511578314322-379afb476865', 'Conference hall'),
+    startDate: '2026-09-12T09:00:00.000Z',
+    endDate: '2026-09-14T17:00:00.000Z',
+    venue: 'Convention Centre',
+    city: 'New Delhi',
+    registrationUrl: 'https://example.com/register',
+    isFree: false,
+    category: cat('world'),
+  },
+  {
+    id: 2,
+    title: 'Tech Founders Meetup',
+    slug: 'tech-founders-meetup',
+    summary: 'An evening of talks and networking for startup founders and builders.',
+    description:
+      '<p>Hear from founders who scaled from garage to IPO, followed by open networking.</p>',
+    featuredImage: img('1540575467063-178a50c2df87', 'Meetup crowd'),
+    startDate: '2026-08-05T18:00:00.000Z',
+    endDate: '2026-08-05T21:00:00.000Z',
+    venue: 'Innovation Hub',
+    city: 'Bengaluru',
+    isFree: true,
+    category: cat('technology'),
+  },
+  {
+    id: 3,
+    title: 'City Marathon 2026',
+    slug: 'city-marathon-2026',
+    summary: 'Thousands take to the streets for the annual charity marathon.',
+    description: '<p>Full, half and 10K categories. Proceeds support local health charities.</p>',
+    featuredImage: img('1552674605-db6ffd4facb5', 'Marathon runners'),
+    startDate: '2026-10-02T06:00:00.000Z',
+    venue: 'City Center',
+    city: 'Mumbai',
+    isFree: false,
+    category: cat('sports'),
+  },
+];
+
 // Wire related articles (avoid self-reference).
 mockArticles.forEach((a) => {
   a.relatedArticles = mockArticles

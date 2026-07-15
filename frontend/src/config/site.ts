@@ -109,6 +109,7 @@ export const megaMenu: MenuItem[] = [
       { id: 72, label: 'Photo Gallery', url: '/gallery', order: 2 },
       { id: 73, label: 'Podcasts', url: '/podcasts', order: 3 },
       { id: 74, label: 'Live Updates', url: '/live', order: 4 },
+      { id: 75, label: 'Events', url: '/events', order: 5 },
     ],
   },
 ];
@@ -133,6 +134,7 @@ export const footerNav = [
       { label: 'Photo Gallery', href: '/gallery' },
       { label: 'Podcasts', href: '/podcasts' },
       { label: 'Live Updates', href: '/live' },
+      { label: 'Events', href: '/events' },
       { label: 'Explainers', href: '/explainers' },
     ],
   },

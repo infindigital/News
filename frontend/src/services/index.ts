@@ -1,3 +1,4 @@
 export * from './articles';
 export * from './taxonomy';
 export * from './multimedia';
+export * from './events';

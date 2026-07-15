@@ -188,6 +188,24 @@ export interface SiteSettings {
   footerText?: string;
 }
 
+export interface EventItem {
+  id: number;
+  documentId?: string;
+  title: string;
+  slug: string;
+  summary?: string;
+  description?: string;
+  featuredImage?: StrapiMedia | null;
+  startDate: string;
+  endDate?: string;
+  venue?: string;
+  city?: string;
+  registrationUrl?: string;
+  isFree?: boolean;
+  category?: Category | null;
+  seo?: SEO;
+}
+
 export interface Comment {
   id: number;
   authorName: string;
