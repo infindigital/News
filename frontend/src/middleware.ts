@@ -42,26 +42,26 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  const nonce = crypto.randomUUID().replace(/-/g, '');
+  // Static CSP (no per-request nonce) so pages stay statically cacheable / ISR
+  // friendly. A nonce would force every page to render dynamically and would
+  // also need to be threaded into Next's scripts; for a content site, allowing
+  // 'self' + inline (which Next's hydration bootstrap requires) is the standard
+  // trade-off. `https:` permits first-party analytics/embeds if added later.
   const csp = [
     `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https: 'unsafe-inline'`,
+    `script-src 'self' 'unsafe-inline' https:`,
     `style-src 'self' 'unsafe-inline'`,
-    `img-src 'self' blob: data: https:`,
+    `img-src 'self' blob: data: https: http://localhost:1337`,
     `font-src 'self' data:`,
     `frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com`,
-    `connect-src 'self' https:`,
+    `connect-src 'self' https: http://localhost:1337`,
     `object-src 'none'`,
     `base-uri 'self'`,
     `form-action 'self'`,
     `frame-ancestors 'self'`,
-    `upgrade-insecure-requests`,
   ].join('; ');
 
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-nonce', nonce);
-
-  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  const response = NextResponse.next();
   response.headers.set('Content-Security-Policy', csp);
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
