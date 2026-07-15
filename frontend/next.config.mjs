@@ -17,6 +17,9 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'i.ytimg.com' },
       { protocol: 'https', hostname: '**.strapi.io' },
+      // GitHub Codespaces forwarded ports (Strapi local uploads over HTTPS).
+      { protocol: 'https', hostname: '**.app.github.dev' },
+      { protocol: 'https', hostname: '**.githubpreview.dev' },
       { protocol: 'http', hostname: 'localhost' },
     ],
   },
